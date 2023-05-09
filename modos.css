@@ -1,0 +1,19 @@
+/* asignar los modos necesarios para cambiar los estilos de visualización  */
+
+#cambioModo{
+    /* estilo necesario para que éste elemento quede 
+    pegado arriba a la derecha de la pantalla */
+}
+
+#luna{
+    display:block;
+    /* se muestra al inicio porque muestro por defecto con el modo día */
+}
+
+#sol{
+    display:none;
+    /* no se muestra al inicio pq por defecto empieza por el modo día */
+}
+
+/* Para superponer los botones del sol y de la luna usamos position absolute top:0 left:0 y que tengan el mismo tamaño,
+ uno en visibility: hidden y otro no, que se vayan cambiando (según el onclick, supongo) */

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tres en raya</title>
+    <style>
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            border: 4px solid blueviolet;
+            display: flex;
+            flex-wrap: wrap;
+            width: 300px;
+        }
+
+        .item {
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            font-size: 80px;
+            width: calc(33.33% - 10px);
+            /* Ancho del 33.33% del contenedor con una separación de 10px */
+            height: 100px;
+            border: 3px solid black;
+            box-sizing: border-box;
+            margin: 5px;
+            /* Separación entre los divs internos */
+        }
+
+        .item.hovered {
+            background-color: lightgray;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        var matrix = [
+            ['', '', ''],
+            ['', '', ''],
+            ['', '', '']
+        ];
+        let check = true;
+        function drawSymbol(id) {
+            var div = document.getElementById(id);
+            var index = parseInt(id.substring(3)) - 1;
+            var rowIndex = Math.floor(index / 3);
+            var colIndex = index % 3;
+
+            
+            if (check == false) {
+                if (matrix[rowIndex][colIndex] === '') {
+                    div.innerHTML = 'O';
+                    div.style.color = 'black';
+
+                    matrix[rowIndex][colIndex] = 'O';
+                }
+            }
+
+            if (check == true) {
+                if (matrix[rowIndex][colIndex] === '') {
+                    div.innerHTML = 'X';
+                    div.style.color = 'black';
+
+                    matrix[rowIndex][colIndex] = 'X';
+                }
+            }
+
+            check = !check;
+
+        }
+
+        window.onload = function () {
+            var items = document.getElementsByClassName('item');
+
+            for (var i = 0; i < items.length; i++) {
+                items[i].onmouseenter = function () {
+                    this.classList.add('hovered');
+                };
+
+                items[i].onmouseleave = function () {
+                    this.classList.remove('hovered');
+                };
+
+                items[i].onclick = function () {
+                    drawSymbol(this.id);
+                    if (checkWin()) {
+                        alert('¡Felicidades! ¡X ha ganado la partida!');
+                    }
+                    if (checkWin2()) {
+                        alert('¡Felicidades! ¡O ha ganado la partida!');
+                    }
+                    if (div.innerHTML == 'X') {
+                        div.innerHTML = 'O';
+                    }
+                };
+            }
+        };
+
+        function checkWin() {
+            // Comprobar filas
+            for (var i = 0; i < 3; i++) {
+                if (matrix[i][0] === 'X' && matrix[i][1] === 'X' && matrix[i][2] === 'X') {
+                    return true;
+                }
+            }
+
+            // Comprobar columnas
+            for (var j = 0; j < 3; j++) {
+                if (matrix[0][j] === 'X' && matrix[1][j] === 'X' && matrix[2][j] === 'X') {
+                    return true;
+                }
+            }
+
+            // Comprobar diagonales
+            if ((matrix[0][0] === 'X' && matrix[1][1] === 'X' && matrix[2][2] === 'X') ||
+                (matrix[0][2] === 'X' && matrix[1][1] === 'X' && matrix[2][0] === 'X')) {
+                return true;
+            }
+
+            return false;
+        }
+
+        function checkWin2() {
+            // Comprobar filas
+            for (var i = 0; i < 3; i++) {
+                if (matrix[i][0] === 'O' && matrix[i][1] === 'O' && matrix[i][2] === 'O') {
+                    return true;
+                }
+            }
+
+            // Comprobar columnas
+            for (var j = 0; j < 3; j++) {
+                if (matrix[0][j] === 'O' && matrix[1][j] === 'O' && matrix[2][j] === 'O') {
+                    return true;
+                }
+            }
+
+            // Comprobar diagonales
+            if ((matrix[0][0] === 'O' && matrix[1][1] === 'O' && matrix[2][2] === 'O') ||
+                (matrix[0][2] === 'O' && matrix[1][1] === 'O' && matrix[2][0] === 'O')) {
+                return true;
+            }
+
+            return false;
+        }
+
+    </script>
+    <div class="container">
+        <div class="item" id="div1"></div>
+        <div class="item" id="div2"></div>
+        <div class="item" id="div3"></div>
+        <div class="item" id="div4"></div>
+        <div class="item" id="div5"></div>
+        <div class="item" id="div6"></div>
+        <div class="item" id="div7"></div>
+        <div class="item" id="div8"></div>
+        <div class="item" id="div9"></div>
+</body>
+
+</html>

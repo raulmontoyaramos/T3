@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./modos.css"/>
+    <title>Trabajo Lenguaje de Marcas</title>
+    <style>
+
+        nav {
+			display: flex;
+			justify-content: flex-start;
+			align-items: center;
+			height: 70px;
+			background-color: #333;
+			color: #fff;
+		}
+
+		nav button {
+			background-color: #333;
+			color: #fff;
+            border-color: aqua;
+			margin: 0 10px;
+			font-size: 20px;
+			font-weight: bold;
+			cursor: pointer;
+			padding: 10px;
+		}
+
+		nav button:hover {
+			background-color: #555;
+		}
+	</style>
+</head>
+<body>
+    <nav>
+		<button onclick="irAJuego()">Un juego</button>
+		<button onclick="mostrarInformacion()">Más información</button>
+	</nav>
+
+	<script>
+		function irAJuego() {
+			window.location.href = "./ter.html";
+		}
+		function mostrarInformacion() {
+			alert("Raúl Montoya Ramos\n1DAM\nPágina web publicitaria");
+		}
+	</script>
+   <!-- <section id="cambioModo">
+          <img id="luna" onclick="modoNoche()" src="./luna.png"/>  /* tambien puede ser una sola funcion cambiarModo() */
+        <img id="sol" onclick="modoDia()" src="./sol.png"/> 
+    </section> -->
+
+</body>
+</html>
